@@ -1,0 +1,25 @@
+pipenv shell
+
+python3 manage.py runserver
+
+path to python intrepreter: /home/yoyo/.local/share/virtualenvs/DrinkWaterWebApp-QRU4x5js
+
+to make new app: 
+1. add app name to INSTALLED_APPS in settings.py
+2. terminal: python3 manage.py startapp [app_name]
+3. add views.py about https request 
+4. make urls.py in current folder to register all urls to the httprequests
+5. register [app_name].urls in urlpatterns
+
+to register images: 
+add 
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
+to all urls.py pages 
+follow this tutorial in formatting files: https://www.mytecbits.com/internet/python/addding-image-django-web-app
+
+tips: 
+1. always end with forward slash / -> urls 
+2. make sure you are referring to the correct url you registered 
+    for example, if it is under home folder, include .../home/[direct linke name]
+    note: they should be seen in urlpatterns, check both bigger&smaller folder

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Page</title>
+</head>
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<style>
+    body{
+        background-color: rgb(149, 218, 246);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: 72px;
+    }
+    .center_img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+    .center_box{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 15%;
+        text-align: center;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 5px;
+        border-width: 10px;
+    }
+    /* Customize the label (the container) */
+    .container {
+        display: block;
+        position: absolute;
+        padding-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 12px;
+        padding-bottom: 15px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        margin-left: 59%;
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+</style>
+<body>
+    <h1>
+        Hello! 
+    </h1>
+
+    {% if alive == 1 %}
+        {% load static %}<img src="{% static "drinkwater/media/1.png" %}" alt="Flower" class="center_img" />
+    {% elif alive == 2 %}
+        {% load static %}<img src="{% static "drinkwater/media/2.png" %}" alt="Flower" class="center_img" />
+    {% elif alive == 3 %}
+        {% load static %}<img src="{% static "drinkwater/media/3.png" %}" alt="Flower" class="center_img" />
+    {% elif alive == 4 %}
+        {% load static %}<img src="{% static "drinkwater/media/4.png" %}" alt="Flower" class="center_img" />
+    {%endif%}
+
+    <p style="text-align: center;"> {{Health}}</p>
+
+    <div class="tooltip">?
+        <span class="tooltiptext">This is your flower. Meeting your water goal every day will keep it alive. Missing two days will KILL IT and you will only be able to revive it after meeting the goal for another 2 days. </span>
+    </div>
+
+    <p class="center_box">Water required: 3.7 Liters</p>
+    <!-- 3.7 liters for men and 2.7 liters for women -->
+
+    <div>
+        <label class="container" style="margin-left: 33%;">1
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-left: 43%;">2
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-left: 53%;">3
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-left: 63%;">4
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+        <label class="container" style="margin-top: 120px; margin-left: 33%; margin-bottom: 15px;">5
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-top: 120px; margin-left: 43%; margin-bottom: 15px;">6
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-top: 120px; margin-left: 53%; margin-bottom: 15px;">7
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+        
+        <label class="container" style="margin-top: 120px; margin-left: 63%; margin-bottom: 15px;">8
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+    </div>
+</body>
+{% endblock %}
