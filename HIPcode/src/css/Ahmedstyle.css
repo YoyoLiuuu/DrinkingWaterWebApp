@@ -1,0 +1,238 @@
+#maincontainer
+{
+ height: 600px;
+  width: 400px;
+  margin: 100px auto;
+  background: #95DAF6;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px black;
+  display:flex;
+  display: grid;
+}
+
+#watergoal
+{
+  height: 100px;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-top: 50px;
+  display:flex;
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#watergoaltext
+{
+  margin-left: 80px;
+  margin-bottom: 80px;
+  font-size:20px;
+  
+}
+
+#input-get
+{
+  width: 110px;
+margin-top:20px;
+  display:flex;
+}
+
+#result
+{
+
+  display:flex;
+}
+
+#cups
+{
+  font-size:20px;
+ margin-top: 60px;
+  margin-left: 10px;
+}
+
+#btn-get
+{
+ margin-top:20px; 
+  margin-left: 50px;
+}
+
+#reminders
+{
+  height: 100px;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-top: 30px;
+  display:flex;
+  display: grid;
+}
+
+#reminderstext
+{
+  margin-left: 100px;
+  margin-bottom: 0px;
+  font-size:20px;
+  display:flex;
+  display:grid;
+  position: relative;
+}
+
+#toggleswitchcontainer
+{
+  height: 50px;
+ 
+  width: 100%;
+  display: flex;
+  display: grid;
+grid-column: 2;
+  grid-row: 2;  
+  position: absolute;
+}
+
+.toggle
+{
+ position: relative;
+}
+
+.toggle input
+{
+  position: absolute;
+  opacity: 0;
+  width: 100px;
+  height: 50px;
+  
+  
+}  
+
+.toggle .onoff
+{
+  color: #000000;
+  font-size: 30px;
+margin-top:45px;
+  margin-left: 30px;
+  display: flex;
+  position: relative;
+ display: grid;
+  cursor: pointer;
+}
+
+.slider
+{
+ position: absolute;
+  display: block;
+  cursor: pointer;
+  background-color: #333;
+  transition: .4s;
+  width: 60px;
+  height: 30px;
+  margin-left: 200px;
+margin-top: 52px;
+  display: grid;
+  display:flex;
+  cursor: pointer;
+}
+
+.slider:before
+{
+ content: '';
+  position: absolute;
+  height:20px;
+  width: 20px;
+  background-color: #ffffff;
+  transition: 0.4s;
+  top:5px;
+  left:5px;
+}
+
+input:checked + .slider
+{
+ background-color: #48AD05;
+}
+
+input:checked + .slider:before
+{
+ transform: translateX(30px); 
+}
+
+.slider.round
+{
+ border-radius: 20px; 
+}
+
+.slider.round::before
+{
+ border-radius: 20px; 
+}
+
+#notify
+{
+    height: 100px;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-bottom: 250px;
+  margin-top: 20px;
+  display:flex;
+  display: grid;
+}
+
+#notifytext
+{
+  margin-left: 0px;
+  margin-bottom: 80px;
+  font-size:20px;
+  text-align: center;
+}
+
+#notifyinput-get
+{
+  width: 110px;
+  margin-left:95px;
+margin-top:10px;
+  display:flex;
+}
+
+#notifybtn-get
+{
+  margin-top:-70px; 
+  margin-left: 130px;
+  width:50px;
+  height:20px;
+}
+
+#sleep
+{
+  height: 100px;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-top: -215px;
+  display:flex;
+  display: grid;
+}
+
+#wakeuptext
+{
+  text-align:center;
+  font-size:20px;
+}
+
+#bedtimetext
+{
+  text-align: center;
+  font-size:20px;
+  margin-top: -10px;
+}
+
+#sleepbtn-get
+{
+  margin-top: 5px;
+  margin-left: 130px;
+  width:50px;
+  height:20px;
+}
