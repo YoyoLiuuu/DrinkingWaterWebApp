@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: rgb(187, 232, 234);
+}
+/*Adding the information box*/ 
+#informationcontainer {
+  border-radius: 15px;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  padding: 10px; 
+  width: 170px;
+  height: 10px;  
+  text-align: center;
+  margin: auto;
+}
+/*Adding Date Box*/ 
+#datecontainer{
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  padding: 10px; 
+  width: 200px;
+  height: 20px;  
+  text-align: center;
+  margin: auto;
+}
+/*Bottle Image center*/ 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+}
+/*Streaks*/ 
+#streakscontainer{
+  text-align: center;
+}
+/* Center aligning the Table*/ 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Changing the font of the Goal tracker*/ 
+#goaltracker{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
