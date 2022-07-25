@@ -9,7 +9,7 @@ to make new app:
 2. terminal: python3 manage.py startapp [app_name]
 3. add views.py about https request 
 4. make urls.py in current folder to register all urls to the httprequests
-5. register [app_name].urls in urlpatterns
+5. register [app_name].urls in urlpatterns in main page
 
 to register images: 
 add 
@@ -18,8 +18,15 @@ add
 to all urls.py pages 
 follow this tutorial in formatting files: https://www.mytecbits.com/internet/python/addding-image-django-web-app
 
+to add css styling sheet： 
+https://www.csestack.org/add-css-static-files-django/#:~:text=%E2%94%80%E2%94%80registration-,Including%20CSS%20in%20Django%20Template,HTML)%20file.&text=Then%2C%20insert%20the%20stylesheet%20in%20the%20HTML%20using%20link%20HTML%20tag.&text=If%20you%20are%20new%20to,adding%20CSS%20in%20HTML%20code.
+
 tips: 
 1. always end with forward slash / -> urls 
 2. make sure you are referring to the correct url you registered 
     for example, if it is under home folder, include .../home/[direct linke name]
     note: they should be seen in urlpatterns, check both bigger&smaller folder
+
+working links: 
+http://127.0.0.1:8000/waterbottle/bottle/
+http://127.0.0.1:8000/home/hello/ 
