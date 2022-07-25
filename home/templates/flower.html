@@ -144,13 +144,13 @@
     </h1>
 
     {% if alive == 1 %}
-        {% load static %}<img src="{% static "drinkwater/media/1.png" %}" alt="Flower" class="center_img" />
+        {% load static %}<img src="{% static "drinkwater/media/1.png" %}" alt="Flower" class="center_img" width=40% height= 80% />
     {% elif alive == 2 %}
-        {% load static %}<img src="{% static "drinkwater/media/2.png" %}" alt="Flower" class="center_img" />
+        {% load static %}<img src="{% static "drinkwater/media/2.png" %}" alt="Flower" class="center_img" width=40% height= 80%/>
     {% elif alive == 3 %}
-        {% load static %}<img src="{% static "drinkwater/media/3.png" %}" alt="Flower" class="center_img" />
+        {% load static %}<img src="{% static "drinkwater/media/3.png" %}" alt="Flower" class="center_img" width=40% height= 80%/>
     {% elif alive == 4 %}
-        {% load static %}<img src="{% static "drinkwater/media/4.png" %}" alt="Flower" class="center_img" />
+        {% load static %}<img src="{% static "drinkwater/media/4.png" %}" alt="Flower" class="center_img" width=40% height= 80%/>
     {%endif%}
 
     <p style="text-align: center;"> {{Health}}</p>
