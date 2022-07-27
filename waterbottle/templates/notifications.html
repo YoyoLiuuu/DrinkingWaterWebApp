@@ -1,6 +1,7 @@
+{% load static %}
 <html>
     <head>
-        <link rel="stylesheet" href="src/css/Ahmedstyle.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/notifications.css' %}"/>
     </head>
   <body>
     <div id="maincontainer">
@@ -54,6 +55,6 @@
         <button id="sleepbtn-get">SAVE</button>
       </div>      
     </div>
-    <script src="src/js/Ahmedmain.js"></script>
+    <script src="{% static 'js/notifications.js' %}"></script> 
   </body>
 </html>

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Water Website</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bottle.css' %}"/>
 </head>
   <style>
     body{
@@ -22,6 +22,18 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 18px;
     }
+
+  .center_box{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 15%;
+      text-align: center;
+      background-color: white;
+      border: 2px solid white;
+      border-radius: 5px;
+      border-width: 10px;
+  }
     </style>
 <header>
   <div id="goaltracker"> 
@@ -30,7 +42,6 @@
 </header>
 <body>
   <script src="script.js"></script>
-<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
 </body>
   <br>
 <body>
@@ -38,7 +49,24 @@
    <div id="datecontainer">
     Date: 7/18
   </div>
-  {% load static %} <img src="{% static "bottle/media/water_bottle.png" %}" alt="waterbottle" /> 
+  {% if waterbottle == 0 %}
+    <img src="{% static "bottle/media/0.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 1 %}
+    <img src="{% static "bottle/media/1.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 2 %}
+    <img src="{% static "bottle/media/2.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 3 %}
+    <img src="{% static "bottle/media/3.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 4 %}
+    <img src="{% static "bottle/media/4.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 5 %}
+    <img src="{% static "bottle/media/5.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 6 %}
+    <img src="{% static "bottle/media/6.png" %}" alt="waterbottle"/> 
+  {% elif waterbottle == 7 %}
+    <img src="{% static "bottle/media/7.png" %}" alt="waterbottle"/> 
+  {%endif%}
+
   <br>
   <div id="informationcontainer">
     Information:
@@ -87,4 +115,6 @@ table, th, td {
   </tr>
 </table>
     </body>
+  <p>   </p>
+    <a class="center_box" href="../../home/hello">Back</a>
 </html>

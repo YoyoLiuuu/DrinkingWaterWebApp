@@ -1,23 +1,23 @@
 #maincontainer
 {
- height: 600px;
-  width: 400px;
-  margin: 100px auto;
-  background: #95DAF6;
+ height: 100%;
+  width: 100%;
+  background: rgb(149, 218, 246);
   border-radius: 20px;
   box-shadow: 10px 10px 5px black;
   display:flex;
   display: grid;
 }
 
+
 #watergoal
 {
   height: 100px;
   width: 310px;
-  background: #ffffff;
+  background: #FFFFFF;
   border-radius: 20px;
-  margin-left: 50px;
-  margin-top: 50px;
+  margin: auto;
+  margin-top: 1%;
   display:flex;
   position: relative;
   grid-column: 1;
@@ -62,10 +62,9 @@ margin-top:20px;
 {
   height: 100px;
   width: 310px;
-  background: #ffffff;
+  background: #FFFFFF;
   border-radius: 20px;
-  margin-left: 50px;
-  margin-top: 30px;
+  margin:auto;
   display:flex;
   display: grid;
 }
@@ -171,11 +170,9 @@ input:checked + .slider:before
 {
     height: 100px;
   width: 310px;
-  background: #ffffff;
+  background: #FFFFFF;
   border-radius: 20px;
-  margin-left: 50px;
-  margin-bottom: 250px;
-  margin-top: 20px;
+  margin:auto;
   display:flex;
   display: grid;
 }
