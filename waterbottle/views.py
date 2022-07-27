@@ -7,5 +7,10 @@ def waterbottle(request):
     # Transform data
     # send email
     # etc 
+
+    bottle = 2
     
-    return render(request, 'bottle.html')
+    return render(request, 'bottle.html', {"waterbottle": bottle})
+
+def notifications(request):
+    return render(request, 'notifications.html')

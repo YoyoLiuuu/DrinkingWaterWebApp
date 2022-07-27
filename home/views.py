@@ -29,3 +29,6 @@ def say_hello(request):
     alive, health = get_live('myname')
     
     return render(request, 'flower.html', {'Health': health, 'alive': alive})
+
+def welcome(request):
+    return render(request, 'welcome.html')

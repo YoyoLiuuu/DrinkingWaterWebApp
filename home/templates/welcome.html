@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Page</title>
+</head>
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<style>
+    body{
+        background-color: rgb(149, 218, 246);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: 72px;
+    }
+    .center_img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+    .center_box{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 15%;
+        text-align: center;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 5px;
+        border-width: 10px;
+    }
+</style>
+<body>
+
+    <h1>
+        Welcome! 
+    </h1>
+
+    {% load static %}<img src="{% static "drinkwater/media/1.png" %}" alt="Flower" class="center_img" width=40% height= 80% />
+
+    <p style="text-align: center;"> {{Health}}</p>
+    
+    <a class="center_box" href= "/home/hello/"> Login  </a>  
+
+    <!-- 3.7 liters for men and 2.7 liters for women -->
+
+</body>
+{% endblock %}

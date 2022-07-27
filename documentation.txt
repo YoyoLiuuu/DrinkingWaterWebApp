@@ -30,3 +30,12 @@ tips:
 working links: 
 http://127.0.0.1:8000/waterbottle/bottle/
 http://127.0.0.1:8000/home/hello/ 
+
+github commands to push changes to remote directory 
+1. git status -> checkout changes locally 
+2. git add . -> add all changes to the local repo 
+3. git status -> check again to make sure everything is green 
+4. git commit -m "[message]" -> commit changes 
+5. git push origin master -> push changes to remote repo -> will create a new branch master -> if doesn't work, check whether branch master already exists 
+
+follow details on github to merge stuff 
