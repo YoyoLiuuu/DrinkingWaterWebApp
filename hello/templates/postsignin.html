@@ -1,0 +1,25 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+{% endblock %}
+{% block  content  %}
+<!DOCTYPE html>
+<html lang="en">
+</body>
+<form action="/postsignin/" method="post">
+    {% csrf_token %}
+    <br/>
+      <h1>Random stuff</h1>
+      
+ 
+<p>Testing to figure out how to use the database</p>
+ 
+ 
+    <label for="food">Favourite food:</label>
+    <input type="name" id="Food" name="food" placeholder="Enter"><br><br>
+     
+    <input type="submit" value="Save"><br><br>
+ 
+</form>
+</html>
+
+{% endblock %}
