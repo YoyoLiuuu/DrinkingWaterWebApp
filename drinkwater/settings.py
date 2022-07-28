@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from pipes import Template
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-5v1r3cmea9@5bp-g2f)3t1v9gu1r%ymaxvy*0jn&zjbeunl(z*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'waterbottle',
+    'hello',
+    'fireapp',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +126,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = BASE_DIR / 'static_collected' #from login app 

@@ -1,0 +1,63 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+<h1>Register</h1>
+{% endblock %}
+{% block  content  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <style>
+     body{
+          
+        }
+        input{
+            margin-top:20px;
+            height: 30px;
+            width: 150px;
+            border-radius: 5px;
+             
+        }
+        input[type="submit"]{
+            background-color: rgba(7, 179, 185, 0.753);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+        }
+ 
+    </style>
+</head>
+<body>
+ 
+<form action="/postsignUp/" method="post">
+    {% csrf_token %}
+    <br/>
+      <h1>Create Account</h1>
+      
+ 
+<p>Fill in this form to create an account</p>
+ 
+ 
+    <label for="username">Username:</label>
+    <input type="name" id="Username" name="name" placeholder="Your Name"><br><br>
+    <!-- Email: -->
+    <label for="Email" >Email:</label>
+    <input type="email" id="Email" name="email" placeholder="Your Email Id"><br><br>
+    <!-- Password: -->
+    <label for="Password">Password:</label>
+    <input type="password" id="Password" name="pass" placeholder="Password"><br><br>
+    <!-- RepeatPassword: -->
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password"><br><br>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+     
+    <input type="submit" value="SignUp"><br><br>
+ 
+</form>
+</body>
+</html>
+
+{% endblock %}
