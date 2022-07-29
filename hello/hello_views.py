@@ -2,9 +2,24 @@ from distutils.command.config import config
 import re
 from django.utils.timezone import datetime
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import admin
 import pyrebase
+from home import home_views
+
+def get_live(username):
+    no_water_days = 3 #change the code so we can get the specific days from database 
+
+    if no_water_days == 0: 
+        health = 'Super Healthy'
+    elif no_water_days == 1:
+        health = 'Drink more water to keep your flower healthy!'
+    elif no_water_days == 2:
+        health = 'Oh no your flower is dying. Please drink more water!'
+    else:
+        health = "You didn't drink enough water these days... your flower is dead... What if you can still save it?"
+
+    return no_water_days+1, health
 
 config= {
     "apiKey": "AIzaSyB-fiT1Ju7Gf4dPdS9BbscZLnjvwycvtt4",
@@ -44,7 +59,8 @@ def postsignIn(request):
         return render(request,"hello/home.html",{"message":message})
     session_id=user['idToken']
     request.session['uid']=str(session_id)
-    return render(request,"postsignin.html",{"email":email})
+    health, alive = get_live(email) #need to modify 
+    return redirect('../home/hello', {'Health': health, 'alive': alive})#, {"email":email})#render(request,"",{"email":email})
  
 def logout(request):
     try:

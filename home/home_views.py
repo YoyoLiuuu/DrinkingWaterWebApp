@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 # Create your views here.
@@ -32,3 +32,8 @@ def say_hello(request):
 
 def welcome(request):
     return render(request, 'welcome.html')
+
+def login(request):
+    return render(request, "flower.html")
+
+

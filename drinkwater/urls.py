@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from hello import views
+from hello import hello_views
+from home import home_views
 
 
 urlpatterns = [
@@ -25,11 +26,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('waterbottle/', include('waterbottle.urls')),
-    path('', views.signIn),
-    path('postsignIn/', views.postsignIn),
-    path('signUp/', views.signUp, name="signup"),
-    path('logout/', views.logout, name="log"),
-    path('postsignUp/', views.postsignUp),
+    path('login/', hello_views.signIn),
+    path('postsignIn/', hello_views.postsignIn),
+    path('signUp/', hello_views.signUp, name="signup"),
+    path('logout/', hello_views.logout, name="log"),
+    path('postsignUp/', hello_views.postsignUp),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
