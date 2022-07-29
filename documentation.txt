@@ -2,6 +2,12 @@ pipenv shell
 
 python3 manage.py runserver
 
+Need to download: 
+1. pip3 install pipenv 
+2. pipenv shell 
+3. pipenv django 
+4. pipenv pyrebase4 
+
 path to python intrepreter: /home/yoyo/.local/share/virtualenvs/DrinkWaterWebApp-QRU4x5js
 
 to make new app: 
