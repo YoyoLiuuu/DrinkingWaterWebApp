@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import admin
 import pyrebase
-from home import home_views
 
 def get_live(username):
     no_water_days = 3 #change the code so we can get the specific days from database 
@@ -38,15 +37,12 @@ authe = firebase.auth()
 database=firebase.database()
  
 def signIn(request):
-    return render(request,"home.html")
+    return render(request,"hello/home.html")
 
 def home(request):
-    return render(request,"postsignin.html")
+    return render(request,"hello/postsignin.html")
  
 def postsignIn(request):
-    db = firebase.database()
-    data = {"TOPGUN": "Maverick"}
-    db.child("users").child("Bob").set(data)
     
     email=request.POST.get('email')
     pasw=request.POST.get('pass')
@@ -67,7 +63,7 @@ def logout(request):
         del request.session['uid']
     except:
         pass
-    return render(request,"home.html")
+    return render(request,"hello/home.html")
  
 def signUp(request):
     return render(request,"hello/about.html")
@@ -77,18 +73,16 @@ def postsignUp(request):
      passs = request.POST.get('pass')
      name = request.POST.get('name')
      
-     print(email)
-     
-     db = firebase.database()
-     data = {"Username": name}
-     db.child("users").set(data)
-     
      try:
         # creating a user with the given email and password
         user=authe.create_user_with_email_and_password(email,passs)
         uid = user['localId']
         idtoken = request.session['uid']
-        print(uid)
+
+        db = firebase.database()
+        data = {"Email": email}
+        db.child(uid).set(data)
+
      except:
         return render(request, "hello/about.html")
      message="Your account has been successfully created, please try logging in."
@@ -112,3 +106,6 @@ def hello_there(request, name):
             'date': datetime.now()
         }
     )
+def store_data(cups):
+    db = firebase.database()
+    db.child("water cups").set(cups)
