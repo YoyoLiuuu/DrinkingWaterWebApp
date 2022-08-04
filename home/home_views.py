@@ -3,11 +3,28 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import check_form
 from hello import hello_views
+import pyrebase
 
 # Create your views here.
 # request -> response 
 #request handler 
 # action 
+
+config= {
+    "apiKey": "AIzaSyB-fiT1Ju7Gf4dPdS9BbscZLnjvwycvtt4",
+    "authDomain": "drink-water-database.firebaseapp.com",
+    "databaseURL": "https://drink-water-database-default-rtdb.firebaseio.com",
+    "projectId": "drink-water-database",
+    "storageBucket": "drink-water-database.appspot.com",
+    "messagingSenderId": "498708914059",
+    "appId": "1:498708914059:web:32adf2844b31d65218598e",
+    "measurementId": "G-TVZERVCL6F"
+}
+
+# Initialising database,auth and firebase for further use
+firebase=pyrebase.initialize_app(config)
+authe = firebase.auth()
+database=firebase.database()
 
 def get_live(username):
     no_water_days = 3 #change the code so we can get the specific days from database 
@@ -42,6 +59,8 @@ def login(request):
 def checkboxes(request):
     cups = 0
     if request.method == 'POST':
+        db = firebase.database()
+
         #check_cups = request.POST.get('checkbox1')
         #print("hellllllllllllllllo", check_cups)
         #form = check_form(request.POST)
@@ -50,6 +69,11 @@ def checkboxes(request):
         box = request.POST.getlist('box')
         for i in box:
             cups += 1
+        print(box)
         alive, health = get_live('myname')
-        hello_views.store_data(cups)
+
+        uid = hello_views.pass_id()
+
+        db.child(uid).update({"water cups": cups})
+
     return render(request, 'flower.html', {'Health': health, 'alive': alive})
