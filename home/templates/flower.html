@@ -172,46 +172,50 @@
     <p class="center_box">Water required: 3.7 Liters</p>
     <!-- 3.7 liters for men and 2.7 liters for women -->
 
-    <div>
-        <label class="container" style="margin-left: 33%;">1
-        <input type="checkbox" checked="checked">
+    <form action="/check/" method="post" onsubmit="var checked = document.querySelectorAll('input[name=box]:checked').length;">
+        {% csrf_token %}
+        <label for="checkbox1" class="container" style="margin-left: 33%;" >1
+        <input type="checkbox" name="box" value="box1" id="checkbox1">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-left: 43%;">2
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box2" id="checkbox2">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-left: 53%;">3
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box3" id="checkbox3">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-left: 63%;">4
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box4" id="checkbox4">
         <span class="checkmark"></span>
         </label>
         <label class="container" style="margin-top: 120px; margin-left: 33%; margin-bottom: 15px;">5
-        <input type="checkbox" checked="checked">
+        <input type="checkbox" name="box" value="box5" id="checkbox5">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-top: 120px; margin-left: 43%; margin-bottom: 15px;">6
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box6" id="checkbox6">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-top: 120px; margin-left: 53%; margin-bottom: 15px;">7
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box7" id="checkbox7">
         <span class="checkmark"></span>
         </label>
         
         <label class="container" style="margin-top: 120px; margin-left: 63%; margin-bottom: 15px;">8
-        <input type="checkbox">
+        <input type="checkbox" name="box" value="box8" id="checkbox8">
         <span class="checkmark"></span>
         </label>
-    </div>
+
+        <input class="center_box" type="submit" value="Save" style="margin-bottom: 0 px;" >
+    </form>
+    {% load static %}   
 
 </body>
 {% endblock %}

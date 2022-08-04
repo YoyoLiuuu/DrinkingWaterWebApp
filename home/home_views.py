@@ -1,5 +1,8 @@
+from tabnanny import check
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import check_form
+from hello import hello_views
 
 # Create your views here.
 # request -> response 
@@ -36,4 +39,17 @@ def welcome(request):
 def login(request):
     return render(request, "flower.html")
 
-
+def checkboxes(request):
+    cups = 0
+    if request.method == 'POST':
+        #check_cups = request.POST.get('checkbox1')
+        #print("hellllllllllllllllo", check_cups)
+        #form = check_form(request.POST)
+        #water_cups = form.water_cups()
+        #hello_views.store_data(water_cups)
+        box = request.POST.getlist('box')
+        for i in box:
+            cups += 1
+        alive, health = get_live('myname')
+        hello_views.store_data(cups)
+    return render(request, 'flower.html', {'Health': health, 'alive': alive})
