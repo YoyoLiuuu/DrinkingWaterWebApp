@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from django.contrib import admin
 import pyrebase
 
+userID = ""
+
 def get_live(username):
     no_water_days = 3 #change the code so we can get the specific days from database 
 
@@ -43,7 +45,8 @@ def home(request):
     return render(request,"hello/postsignin.html")
  
 def postsignIn(request):
-    
+    global userID
+
     email=request.POST.get('email')
     pasw=request.POST.get('pass')
     
@@ -53,6 +56,9 @@ def postsignIn(request):
     except:
         message="Invalid Credentials!! Please check your information"
         return render(request,"hello/home.html",{"message":message})
+
+    userID = user['localId']
+
     session_id=user['idToken']
     request.session['uid']=str(session_id)
     health, alive = get_live(email) #need to modify 
@@ -80,7 +86,13 @@ def postsignUp(request):
         idtoken = request.session['uid']
 
         db = firebase.database()
-        data = {"Email": email}
+        data = {"Email": email,
+                "Checkboxes": "0",
+                "Wake up": "00:00",
+                "Bedtime": "00:00",
+                "water cups": "0",
+                "Remind hours": "0"
+                }
         db.child(uid).set(data)
 
      except:
@@ -106,6 +118,6 @@ def hello_there(request, name):
             'date': datetime.now()
         }
     )
-def store_data(cups):
-    db = firebase.database()
-    db.child("water cups").set(cups)
+
+def pass_id():
+    return userID
