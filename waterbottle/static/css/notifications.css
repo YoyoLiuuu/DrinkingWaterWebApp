@@ -1,23 +1,17 @@
-#maincontainer
+body
 {
- height: 100%;
-  width: 100%;
-  background: rgb(149, 218, 246);
-  border-radius: 20px;
-  box-shadow: 10px 10px 5px black;
-  display:flex;
-  display: grid;
+  background-color: #95DAF6;
 }
-
 
 #watergoal
 {
   height: 100px;
   width: 310px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 20px;
-  margin: auto;
+  margin:auto;
   margin-top: 1%;
+  margin-bottom: 3.5%;
   display:flex;
   position: relative;
   grid-column: 1;
@@ -62,9 +56,10 @@ margin-top:20px;
 {
   height: 100px;
   width: 310px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 20px;
   margin:auto;
+  margin-bottom: 3.5%;
   display:flex;
   display: grid;
 }
@@ -170,9 +165,10 @@ input:checked + .slider:before
 {
     height: 100px;
   width: 310px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 20px;
   margin:auto;
+  margin-bottom: 3.5%;
   display:flex;
   display: grid;
 }
@@ -207,8 +203,8 @@ margin-top:10px;
   width: 310px;
   background: #ffffff;
   border-radius: 20px;
-  margin-left: 50px;
-  margin-top: -215px;
+  margin:auto;
+  margin-bottom: 20%;
   display:flex;
   display: grid;
 }

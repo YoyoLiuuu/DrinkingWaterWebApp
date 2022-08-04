@@ -4,8 +4,15 @@ let inputGet = document.querySelector('#input-get');
 
 btnGet.addEventListener('click', () =>
 {
-  alert("Your new water goal is " + inputGet.value + " cups");
-});
+  if(inputGet.value > 0)
+  {
+    alert("Your new water goal is " + inputGet.value + " cups");
+  }
+  else
+  {
+    alert("Invalid Value");
+  }
+})
 
 const toggle = document.querySelector('.toggle input')
 
@@ -20,15 +27,23 @@ let notifyinputGet = document.querySelector('#notifyinput-get');
 
 notifybtnGet.addEventListener('click', () =>
 {
-  alert("You will be notified every " + notifyinputGet.value + " hour(s)");
-  
-});
-
-let wakeupInput = document.querySelector('wakeupinput-get');
-let bedtimeInput = document.querySelector('bedtimeinput-get');
-let sleepButton = document.querySelector('sleepbtn-get');
-
-sleepButton.addEventListener('click', () =>
-{
-  alert("Your new wake up time is " + wakeupInput + " and your new bedtime is " + bedtimeInput);
+  if(notifyinputGet.value > 0)
+  {
+    alert("You will be notified every " + notifyinputGet.value + " hour(s)");
+  }
+  else
+  {
+    alert("Invalid Value");
+  }
 })
+
+let wakeuptime = document.getElementById("wakeupinput-get");
+let sleepingtime = document.getElementById("bedtime-get");
+
+
+function processData(wakeuptime,sleepingtime)
+{
+ var awake = wakeuptime.value;
+ var asleep = sleepingtime.value;
+ alert("Your new wake up time is " + awake + " and your new sleeping time is " + asleep);
+}
