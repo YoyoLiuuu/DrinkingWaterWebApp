@@ -45,3 +45,7 @@ github commands to push changes to remote directory
 5. git push origin master -> push changes to remote repo -> will create a new branch master -> if doesn't work, check whether branch master already exists 
 
 follow details on github to merge stuff 
+
+pull from remote directory 
+1. git fetch origin 
+2. git merge origin/main 

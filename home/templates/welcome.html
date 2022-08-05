@@ -54,5 +54,9 @@
 
     <!-- 3.7 liters for men and 2.7 liters for women -->
 
+    {% if alert %}
+        <script>alert("Oops, looks like you haven't signed in yet! Please log in first!")</script>
+    {% endif %}
+
 </body>
 {% endblock %}
