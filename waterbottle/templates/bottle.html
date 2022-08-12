@@ -7,6 +7,13 @@
   <meta name="viewport" content="width=device-width">
   <title>Water Website</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css/bottle.css' %}"/>
+  {% load static %}
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="module" src="{% static 'js/message.js' %}">
+    </script>
 </head>
   <style>
     body{

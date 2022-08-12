@@ -1,60 +1,70 @@
 {% load static %}
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/notifications.css' %}"/>
-    </head>
-  <body>
-    <div id="maincontainer">
-      
-      <div id="watergoal">
-        <p id="watergoaltext">
-          Water goal:
-              
-      <input type="number" id="input-get" placeholder="ENTER VALUE">
-      <button id = "btn-get">SAVE</button>
-        </p>
-        <p id="cups">
-          cups
-        </p>    
-        </div>
-     
-      <div id="reminders">
-        <p id="reminderstext">
-          Reminders:
-        </p>
-        <div id="toggleswitchcontainer">
-          <label class="toggle">
-            
-            <input type="checkbox"/>
-            <span class="slider round"></span>
-            <span class="onoff">OFF</span>
-          </label>
-        </div>
-      </div>
-      
-      <div id="notify">
-        <p id="notifytext">
-          Notify me every:
-           
-          <input type="number" id="notifyinput-get" placeholder="ENTER VALUE">
-         hours
-          
-        </p>
-<button id= "notifybtn-get">SAVE</button>
-      </div>
-      
-      <div id="sleep">
-        <p id="wakeuptext">
-          Wake up:
-          <input type="time" id="wakeupinput-get">
-        </p>
-        <p id="bedtimetext">
-          Bedtime:
-          <input type="time" id="bedtimeinput-get">
-        </p>
-        <button id="sleepbtn-get">SAVE</button>
-      </div>      
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/notifications.css' %}" />
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type="module" src="{% static 'js/message.js' %}">
+   
+  </script>
+</head>
+
+<body>
+  <div id="maincontainer">
+
+    <div id="watergoal">
+      <p id="watergoaltext">
+        Water goal:
+
+        <input type="number" id="input-get" placeholder="ENTER VALUE">
+        <button id="btn-get">SAVE</button>
+      </p>
+      <p id="cups">
+        cups
+      </p>
     </div>
-    <script src="{% static 'js/notifications.js' %}"></script> 
-  </body>
+
+    <div id="reminders">
+      <p id="reminderstext">
+        Reminders:
+      </p>
+      <div id="toggleswitchcontainer">
+        <label class="toggle">
+
+          <input type="checkbox" />
+          <span class="slider round"></span>
+          <span class="onoff">OFF</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="notify">
+      <p id="notifytext">
+        Notify me every: <br>
+        <input type="number"  min="0" max="23" id="notifyinput-get" placeholder="ENTER VALUE"> hours <br>
+        <input type="number"  min="0" max="60"id="minuteinput-get" placeholder="ENTER VALUE">  minutes
+      </p>
+      
+      <button id="notifybtn-get">SAVE</button>
+    </div>
+
+    <div id="sleep">
+      <p id="wakeuptext">
+        Wake up:
+        <input type="time" id="wakeupinput-get">
+      </p>
+      <p id="bedtimetext">
+        Bedtime:
+        <input type="time" id="bedtimeinput-get">
+      </p>
+      <button id="sleepbtn-get">SAVE</button>
+    </div>
+  </div>
+  {% csrf_token %}
+  <script src="{% static 'js/notifications.js' %}" ></script>
+</body>
+
 </html>

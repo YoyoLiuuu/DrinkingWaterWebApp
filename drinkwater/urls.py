@@ -22,7 +22,7 @@ from home import home_views
 
 urlpatterns = [
     path('', include("hello.urls")),
-
+    
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('waterbottle/', include('waterbottle.urls')),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('signUp/', hello_views.signUp, name="signup"),
     path('logout/', hello_views.logout, name="log"),
     path('postsignUp/', hello_views.postsignUp),
+    
 ]
 
 urlpatterns += staticfiles_urlpatterns()

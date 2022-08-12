@@ -1,11 +1,13 @@
 from distutils.command.config import config
 import re
+from urllib import request
 from django.utils.timezone import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import admin
 import pyrebase
-
+import json
+import requests
 userID = ""
 
 def get_live(username):
@@ -37,7 +39,67 @@ config= {
 firebase=pyrebase.initialize_app(config)
 authe = firebase.auth()
 database=firebase.database()
- 
+
+
+def send_notification(registration_ids, message_title, message_description):
+    fcm_api="AAAAdB1eH4s:APA91bEI5pPOCWlPvk54fm6MmdbMgUEzVY6_0JLKezmU6qteUUQbjtNU2uE_39X_Qn8u_i33DNhQsD-qvUOuZ129caZqQ1UERO2wsYQxYTTdHoLCGbzgb0_b2TpyPBeNnFS5mF2ljMyG"
+    url = "https://fcm.googleapis.com/fcm/send"
+    
+    headers = {
+        "Content-type":"application/json",
+        "Authorization": 'key='+fcm_api
+    }
+    payload = {
+        "registration_ids":registration_ids,
+        "priority": "high",
+        "notification": {
+                "body": message_description,
+                "title": message_title,
+                "image": "https://us.123rf.com/450wm/yupiramos/yupiramos1803/yupiramos180307685/96803395-beautiful-flower-wink-cartoon-vector-illustration.jpg?ver=6",
+                "icon": "https://img.freepik.com/premium-vector/cute-flower-cartoon-character_313669-38.jpg",
+                "click_action": 'http://127.0.0.1:8000/home/hello/'
+        }
+       
+    }
+    result = requests.post(url, data=json.dumps(payload), headers=headers)
+
+   
+
+def send(request):
+    registration =[]
+    key = request.COOKIES.get('key')
+    registration.append(key)
+    send_notification(registration, "Reminder", "Drink more water to keep your flower healthy!")
+    return HttpResponse("sent")
+
+def showFirebaseJS(request):
+   
+    data=   'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");' \
+            'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");' \
+            'var firebaseConfig = {' \
+                'apiKey: "AIzaSyB-fiT1Ju7Gf4dPdS9BbscZLnjvwycvtt4",'\
+                'authDomain: "drink-water-database.firebaseapp.com",'\
+                'databaseURL: "https://drink-water-database-default-rtdb.firebaseio.com",'\
+                'projectId: "drink-water-database",'\
+                'storageBucket: "drink-water-database.appspot.com",'\
+                'messagingSenderId: "498708914059",'\
+                'appId: "1:498708914059:web:32adf2844b31d65218598e",'\
+                'measurementId: "G-TVZERVCL6F"'\
+            '};'\
+            'firebase.initializeApp(firebaseConfig);'\
+            'const messaging = firebase.messaging();'\
+            'messaging.setBackgroundMessageHandler(function(payload) {'\
+                'console.log("Received background message", payload);'\
+                'const notification = JSON.parse(payload);'\
+                'const notificationOptions = {'\
+                    'body: notification.body,'\
+                    'icon: notification.icon,'\
+                '};'\
+                'return self.registration.showNotification(payload.notification.title, notificationOptions);'\
+            '});'
+           
+            
+    return HttpResponse(data, content_type="text/javascript")
 def signIn(request):
     return render(request,"hello/home.html")
 

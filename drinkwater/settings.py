@@ -16,7 +16,6 @@ from pipes import Template
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -42,7 +41,9 @@ INSTALLED_APPS = [
     'waterbottle',
     'hello',
     'fireapp',
+    'fcm_django',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,6 +86,17 @@ DATABASES = {
     }
 }
 
+FCM_DJANGO_SETTINGS = {
+     # default: _('FCM Django')
+    "APP_VERBOSE_NAME": "[FCM Django]",
+     # true if you want to have only one active device per registered user at a time
+     # default: False
+    "ONE_DEVICE_PER_USER": False,
+     # devices to which notifications cannot be sent,
+     # are deleted upon receiving error response from FCM
+     # default: False
+    "DELETE_INACTIVE_DEVICES": False,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

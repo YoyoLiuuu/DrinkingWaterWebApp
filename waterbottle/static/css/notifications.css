@@ -181,12 +181,9 @@ input:checked + .slider:before
   text-align: center;
 }
 
-#notifyinput-get
+#minuteinput-get 
 {
-  width: 110px;
-  margin-left:95px;
-margin-top:10px;
-  display:flex;
+  margin-left:19px
 }
 
 #notifybtn-get
