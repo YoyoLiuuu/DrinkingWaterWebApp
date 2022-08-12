@@ -144,6 +144,11 @@
     .tooltip:hover .tooltiptext {
         visibility: visible;
     }
+
+    p{
+        text-align: center;
+    }
+
 </style>
 <body>
 
@@ -176,8 +181,25 @@
         <span class="tooltiptext">This is your flower. Meeting your water goal every day will keep it alive. Missing two days will KILL IT and you will only be able to revive it after meeting the goal for another 2 days. </span>
     </div>
 
-    <p class="center_box">Water required: 3.7 Liters</p>
+    <p class="center_box">Water required: 8 Cpus</p>
     <!-- 3.7 liters for men and 2.7 liters for women -->
+
+    {% if cups_decrease %}
+        <input type="hidden" id="myVar" name="variable" value="{{ cups }}">
+        <script>var a = document.getElementById("myVar").value;
+        alert("Wait, you recorded drinking " + a + " cups of water before, did you included the previous cups? Well, we recorded what you just inputed to your account. But feel free to resubmit the correct cups of water you drink today!")
+        </script>
+    {% else %}
+        {% if cups == 0 %}
+        <p>You didn't drink  any water today? Let's start tracking water</p>
+        {% else %}
+        <p>You drank {{cups}} of water today.</p>
+        {% endif %}
+
+        {% if cups == 8 %}
+        <p>Wow amazing! You reached your 8 cups per day water goal!</p>
+        {% endif %}
+    {% endif %}
 
     <form action="/check/" method="post" onsubmit="var checked = document.querySelectorAll('input[name=box]:checked').length;">
         {% csrf_token %}
@@ -222,7 +244,6 @@
 
         <input class="center_box" type="submit" value="Save" style="margin-bottom: 0 px;" >
     </form>
-    {% load static %}   
 
 </body>
 {% endblock %}
