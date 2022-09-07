@@ -16,8 +16,9 @@ var firebaseConfig = {
     .then((currentToken) => {
       if (currentToken) {
         localStorage.setItem('fcm_token', currentToken)
-        document.cookie = "key=" + currentToken
-        // console.log("TOKEN: " + currentToken)
+        document.cookie = "fcm_token=" + currentToken
+        console.log("TOKEN: " + currentToken)
+        console.log("ALL COOKIES: " + document.cookie.split(';'))
       } else {
         console.log('No registration token available. Request permission to generate one.');
       }
