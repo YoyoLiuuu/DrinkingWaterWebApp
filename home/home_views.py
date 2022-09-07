@@ -6,7 +6,7 @@ from .forms import check_form
 from hello import hello_views
 import pyrebase
 from django.contrib import messages
-
+from datetime import datetime, timedelta
 
 # Create your views here.
 # request -> response 
@@ -29,8 +29,8 @@ firebase=pyrebase.initialize_app(config)
 authe = firebase.auth()
 database=firebase.database()
 
-def get_live(username):
-    no_water_days = 3 #change the code so we can get the specific days from database 
+def get_live(username, no_water_days):
+    # no_water_days = 2 #change the code so we can get the specific days from database 
 
     if no_water_days == 0: 
         health = 'Super Healthy'
@@ -52,15 +52,33 @@ def say_hello(request):
     uid = hello_views.pass_id()
     user = db.child(uid).get()
 
-    user = db.child(uid).get()
-
     user_info = dict(user.val())
 
     cups = user_info.get('water cups')
 
+    # Check if user drank enough water in last 2 days
+    # TODAY
+    count = 0
+    d = datetime.today().date()
+    today = user_info.get("tracking").get(str(d))
+    if today == None or int(today) < 8:
+        count = count + 1
+    # One day ago
+    d = (datetime.today() - timedelta(days=1)).date()
+    oneDayAgo = user_info.get("tracking").get(str(d))
+    if oneDayAgo == None or int(oneDayAgo) < 8:
+        count = count+ 1
+        
+    # Two days ago
+    d = (datetime.today() - timedelta(days=2)).date()
+    twoDaysAgo = user_info.get("tracking").get(str(d))
+    if twoDaysAgo == None or int(twoDaysAgo) < 8:
+        count = count + 1     
+
+
     cups_decrease = False
 
-    alive, health = get_live('myname')
+    alive, health = get_live('myname', count)
     
     return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': cups, 'cups_decrease': cups_decrease})
 
@@ -78,7 +96,10 @@ def checkboxes(request):
         box = request.POST.getlist('box')
         for i in box:
             cups += 1
-        alive, health = get_live('myname')
+
+
+        # Check if user drank enough water in last 2 days
+        # alive, health = get_live('myname', 1)
 
         uid = hello_views.pass_id()
 
@@ -88,16 +109,46 @@ def checkboxes(request):
             return render(request, 'welcome.html', {'alert': alert})
 
         user = db.child(uid).get()
-
         user_info = dict(user.val())
 
         original_cups = user_info.get('water cups')
 
-        if original_cups <= cups:
-            db.child(uid).update({"water cups": cups})
-            return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': cups, 'cups_decrease': cups_decrease})
+        # if int(original_cups) <= int(cups):
+        #     db.child(uid).update({"water cups": cups})
+        #     return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': cups, 'cups_decrease': cups_decrease})
 
-        else: 
+        # else: 
+        #     cups_decrease = True
+        #     db.child(uid).update({"water cups": cups})
+        #     return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': original_cups, 'cups_decrease': cups_decrease})
+
+        if int(original_cups) > int(cups): 
             cups_decrease = True
-            db.child(uid).update({"water cups": cups})
-            return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': original_cups, 'cups_decrease': cups_decrease})
+
+        # UPDATE INFO IN THE DATABASE
+        db.child(uid).update({"water cups": cups})
+        d = datetime.today().date()
+        db.child(uid).child("tracking").child(d).set(cups)
+
+
+        # CHECK IF USER DRANK ENOUGH WATER THESE 3 DAYS
+        count = 0
+        today = user_info.get("tracking").get(str(d))
+        if today == None or int(today) < 8:
+            count = count + 1
+        # One day ago
+        d = (datetime.today() - timedelta(days=1)).date()
+        oneDayAgo = user_info.get("tracking").get(str(d))
+        if oneDayAgo == None or int(oneDayAgo) < 8:
+            count = count+ 1
+            
+        # Two days ago
+        d = (datetime.today() - timedelta(days=2)).date()
+        twoDaysAgo = user_info.get("tracking").get(str(d))
+        if twoDaysAgo == None or int(twoDaysAgo) < 8:
+            count = count + 1
+
+        # SET alive, health
+        alive, health = get_live('myname', count)
+
+        return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': original_cups, 'cups_decrease': cups_decrease})

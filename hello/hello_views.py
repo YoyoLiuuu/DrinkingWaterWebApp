@@ -8,6 +8,7 @@ from django.contrib import admin
 import pyrebase
 import json
 import requests
+import datetime
 userID = ""
 
 def get_live(username):
@@ -151,11 +152,23 @@ def postsignUp(request):
         idtoken = request.session['uid']
 
         db = firebase.database()
+        # data = {"Email": email,
+        #         "Checkboxes": "0",
+        #         "Wake up": "00:00",
+        #         "Bedtime": "00:00",
+        #         "water cups": "0",
+        #         "Remind hours": "0"
+        #         }
+        
+        current_datetime = datetime.date.today()
         data = {"Email": email,
                 "Checkboxes": "0",
                 "Wake up": "00:00",
                 "Bedtime": "00:00",
                 "water cups": "0",
+                "tracking": {
+                    current_datetime: "",
+                },
                 "Remind hours": "0"
                 }
         db.child(uid).set(data)
