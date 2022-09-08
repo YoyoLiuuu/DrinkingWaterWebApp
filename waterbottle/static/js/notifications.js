@@ -23,14 +23,14 @@ saveTimeBtn.addEventListener('click', () => {
 
 const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 function get_fb(){
-  
+  var fcm_token = localStorage.getItem('fcm_token')
   $.ajaxSetup({
     headers: { "X-CSRFToken": csrftoken }
   });
   $.ajax({
     type: "POST",
     url:'/send/',
-    data: {},
+    data: JSON.stringify({"token": fcm_token}),
     success: function (data) {
       console.log("success")
     }
@@ -53,7 +53,7 @@ toggle.addEventListener('click', () => {
       let dividedMinute = sleepingtime.value.split(':')[1] - wakeuptime.value.split(':')[1]
       let averageTime = Math.floor((dividedHour*60 + dividedMinute)/inputGet.value)
       setInterval(get_fb, 1000*60*averageTime);
-      console.log((dividedHour*60 + dividedMinute)/inputGet.value);
+      // console.log((dividedHour*60 + dividedMinute)/inputGet.value);
       alert("You will be notifed every "+ Math.floor(averageTime/60) + " hour(s) and " + (averageTime%60)+ " minute(s)");
       var div = document.getElementById('notify');
       div.remove();

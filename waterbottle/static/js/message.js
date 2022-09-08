@@ -15,10 +15,10 @@ var firebaseConfig = {
   messaging.getToken({ vapidKey: 'BPcTEKzpK4xmNDhcAuyICrML7vtsaewlKkjB15phBH5Ti_T5gsAuUuQwf2EHQj5I5CyqrH6fN3MwQ7AFDJv6Gz8' })
     .then((currentToken) => {
       if (currentToken) {
-        localStorage.setItem('fcm_token', currentToken)
-        document.cookie = "fcm_token=" + currentToken
-        console.log("TOKEN: " + currentToken)
-        console.log("ALL COOKIES: " + document.cookie.split(';'))
+        localStorage.setItem('fcm_token', currentToken);
+        // document.cookie = "fcm_token=" + currentToken + ";path=" +'/';
+        // console.log("TOKEN: " + currentToken);
+        // console.log("ALL COOKIES: " + document.cookie.split(';'));
       } else {
         console.log('No registration token available. Request permission to generate one.');
       }

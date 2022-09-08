@@ -68,10 +68,9 @@ def send_notification(registration_ids, message_title, message_description):
 
 def send(request):
     registration =[]
-    key = request.COOKIES.get('fcm_token')
-    print(request.COOKIES)
-    print(key)
-    registration.append('eV4ORwwipTe9uDsA4KVtJX:APA91bHxqhcrZqLOi5CzLuCwHlThwqVjz3vq_GhTg3C2jhGBy9kIn5D-_VTPRnqC7Rf4V1pxl1zEQ7lTpw5k0GMRoFth7M3i8nKXVCU2Py4NW45xm3cqXF6Ok6hTTgBtpHn50wnVxHxT')
+    # key = request.COOKIES.get('fcm_token')
+    body = json.loads(request.body.decode('UTF-8'))
+    registration.append(body["token"])
     # registration.append(key)
     send_notification(registration, "Reminder", "Drink more water to keep your flower healthy!")
     return HttpResponse("sent")
