@@ -1,16 +1,43 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from hello import hello_views
+import pyrebase
+from datetime import datetime
+import json
+config= {
+    "apiKey": "AIzaSyB-fiT1Ju7Gf4dPdS9BbscZLnjvwycvtt4",
+    "authDomain": "drink-water-database.firebaseapp.com",
+    "databaseURL": "https://drink-water-database-default-rtdb.firebaseio.com",
+    "projectId": "drink-water-database",
+    "storageBucket": "drink-water-database.appspot.com",
+    "messagingSenderId": "498708914059",
+    "appId": "1:498708914059:web:32adf2844b31d65218598e",
+    "measurementId": "G-TVZERVCL6F"
+}
+
+# Initialising database,auth and firebase for further use
+firebase=pyrebase.initialize_app(config)
+authe = firebase.auth()
+database=firebase.database()
 
 # Create your views here.
 def waterbottle(request):
     # Pull data from database 
-    # Transform data
+    db = firebase.database()
+    uid = hello_views.pass_id()
+    user = db.child(uid).get()
+    user_info = dict(user.val())
+    
+    # Transform data and get water cups today
+
+    trackDict = json.dumps(user_info.get("tracking"))
+
     # send email
     # etc 
 
     bottle = 2
     
-    return render(request, 'bottle.html', {"waterbottle": bottle})
+    return render(request, 'bottle.html', {"waterbottle": bottle, "tracking": trackDict})
 
 def notifications(request):
     return render(request, 'notifications.html')

@@ -31,7 +31,7 @@ database=firebase.database()
 
 def get_live(username, no_water_days):
     # no_water_days = 2 #change the code so we can get the specific days from database 
-
+   
     if no_water_days == 0: 
         health = 'Super Healthy'
     elif no_water_days == 1:
@@ -133,8 +133,7 @@ def checkboxes(request):
 
         # CHECK IF USER DRANK ENOUGH WATER THESE 3 DAYS
         count = 0
-        today = user_info.get("tracking").get(str(d))
-        if today == None or int(today) < 8:
+        if cups < 8:
             count = count + 1
         # One day ago
         d = (datetime.today() - timedelta(days=1)).date()

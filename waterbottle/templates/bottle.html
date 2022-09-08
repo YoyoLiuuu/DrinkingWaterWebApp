@@ -48,7 +48,7 @@
   </div>
 </header>
 <body>
-  <script src="script.js"></script>
+  <script src="{% static 'js/.js' %}" ></script>
 </body>
   <br>
 <body>
@@ -103,24 +103,73 @@ table, th, td {
   <body>
   <table class="center">
   <tr>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
+    <th id="w0">Sunday</th>
+    <th id="w1">Monday </th>
+    <th id="w2">Tuesday</th>
+    <th id="w3">Wednesday</th>
+    <th id="w4">Thursday</th>
+    <th id="w5">Friday</th>
+    <th id="w6">Saturday</th>
+    
   </tr>
   <tr>
-    <td>100%</td>
-    <td>86%</td>
-    <td>71%</td>
-    <td>100%</td>
-    <td>13%</td>
-    <td>100%</td>
-    <td>-</td>
+    <td id="d0">-</td>
+    <td id="d1">-</td>
+    <td id="d2">-</td>
+    <td id="d3">-</td>
+    <td id="d4">-</td>
+    <td id="d5">-</td>
+    <td id="d6">-</td>
+    
   </tr>
 </table>
+<script type="text/javascript" > 
+// <script src="{% static 'js/bottle.js' %}" > 
+  var data= JSON.parse('{{ tracking | safe }}')
+  
+
+  // Check today is which date of the week  0-6 for sunday to saturday
+  const d = new Date();
+
+  for (let i=0; i<=d.getDay(); i++){
+    const date = new Date();
+    date.setDate(date.getDate()-i);
+    var current_date = date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+ ("0"+date.getDate()).slice(-2);
+    
+
+    // Add the exact date to each day of the week
+    let str0 = "w"+ date.getDay().toString();
+    let day = document.getElementById(str0);
+    const br = document.createElement("br");
+    const node = document.createTextNode(current_date);
+    day.appendChild(br);
+    day.appendChild(node);
+
+    // Data for each day
+    let str = "d"+ date.getDay().toString();
+    let d = document.getElementById(str);
+
+    // Change the data according to the record
+    if (data[current_date]) {
+      var percent = (data[current_date]/8)*100
+      d.innerHTML = percent.toString() + "%";
+    } 
+  }
+
+  for (let j=1; j < (7-d.getDay()); j++ ) {
+    const date = new Date();
+    date.setDate(date.getDate()+j);
+    var current_date = date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+ ("0"+date.getDate()).slice(-2);
+   // Add the exact date to each day of the week
+    let str0 = "w"+ date.getDay().toString();
+    let day = document.getElementById(str0);
+    const br = document.createElement("br");
+    const node = document.createTextNode(current_date);
+    day.appendChild(br);
+    day.appendChild(node);
+  }
+
+</script>
     </body>
   <p>   </p>
     <a class="center_box" href="../../home/hello">Back</a>
