@@ -150,4 +150,4 @@ def checkboxes(request):
         # SET alive, health
         alive, health = get_live('myname', count)
 
-        return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': original_cups, 'cups_decrease': cups_decrease})
+        return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': cups, 'cups_decrease': cups_decrease})

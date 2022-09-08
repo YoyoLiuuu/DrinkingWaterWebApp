@@ -71,12 +71,14 @@
   {% elif waterbottle == 6 %}
     <img src="{% static "bottle/media/6.png" %}" alt="waterbottle"/> 
   {% elif waterbottle == 7 %}
-    <img src="{% static "bottle/media/7.png" %}" alt="waterbottle"/> 
+    <img src="{% static "bottle/media/7.png" %}" alt="waterbottle"/>
+  {% elif waterbottle == 8 %}
+    <img src="{% static "bottle/media/7.png" %}" alt="waterbottle"/>  
   {%endif%}
 
   <br>
   <div id="informationcontainer">
-    Information:
+    Information: {{waterbottle}}/8 cups
   </div>
   <br>
   <div id="streakscontainer">
@@ -126,11 +128,16 @@ table, th, td {
 <script type="text/javascript" > 
 // <script src="{% static 'js/bottle.js' %}" > 
   var data= JSON.parse('{{ tracking | safe }}')
-  
+ 
+  // Change the date for daily water intake
+  const d = new Date();
+  var current_date = d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+ ("0"+d.getDate()).slice(-2);
+  let dateContainer = document.getElementById("datecontainer");
+  dateContainer.innerHTML = "Date: " + current_date;
+
+
 
   // Check today is which date of the week  0-6 for sunday to saturday
-  const d = new Date();
-
   for (let i=0; i<=d.getDay(); i++){
     const date = new Date();
     date.setDate(date.getDate()-i);

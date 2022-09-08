@@ -31,13 +31,12 @@ def waterbottle(request):
     # Transform data and get water cups today
 
     trackDict = json.dumps(user_info.get("tracking"))
-
+    cups = user_info.get('water cups') 
     # send email
     # etc 
 
-    bottle = 2
     
-    return render(request, 'bottle.html', {"waterbottle": bottle, "tracking": trackDict})
+    return render(request, 'bottle.html', {"waterbottle": cups, "tracking": trackDict})
 
 def notifications(request):
     return render(request, 'notifications.html')

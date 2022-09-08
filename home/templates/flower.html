@@ -181,7 +181,7 @@
         <span class="tooltiptext">This is your flower. Meeting your water goal every day will keep it alive. Missing two days will KILL IT and you will only be able to revive it after meeting the goal for another 2 days. </span>
     </div>
 
-    <p class="center_box">Water required: 8 Cpus</p>
+    <p class="center_box">Water required: 8 Cups</p>
     <!-- 3.7 liters for men and 2.7 liters for women -->
 
     {% if cups_decrease %}
@@ -193,7 +193,7 @@
         {% if cups == 0 %}
         <p>You didn't drink  any water today? Let's start tracking water</p>
         {% else %}
-        <p>You drank {{cups}} of water today.</p>
+        <p>You drank {{cups}} cups of water today.</p>
         {% endif %}
 
         {% if cups == 8 %}
