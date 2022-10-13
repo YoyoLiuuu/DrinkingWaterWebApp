@@ -11,12 +11,16 @@
 {% endif %}
 <!DOCTYPE html>
 <html lang="en">
-    <h1> Log In </h1>
+    <!-- <h1 class="row d-flex justify-content-center align-items-center h-100"> Log In </h1> -->
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
     <style>
-     body{
+         #tab-login{
+            background-color: #5bc0de;
+            color: white;
+        }
+     /* body{
         }
          input{
             margin-top:20px;
@@ -39,26 +43,75 @@
             height: 30px;
             border: none;
             border-radius: 5px;
-        }
+        } */
     </style>
 </head>
 <body>
- 
-<form action="/postsignIn/" method="post">
-    {% csrf_token %}
-    <br/>
-   <!-- Enter Your Email: -->
-    <label for="Email">Email</label>
-    <input type="email"id="Email" name="email"><br><br>
-   <!-- Enter Your Password: -->
-    <label for="Password">Password</label>
-    <input type="password" id="Password" name="pass"><br><br>
-    <input type="submit" value="SignIn" ><br><br>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-    <button type="button" onclick="location.href='{% url 'signup' %} '">SignUp</button>
-</form>
+    <section class="vh-100" style="background-color: #e0fbfc;">
+        <!-- <div class="container-fluid h-custom"> -->
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+
+                <!-- <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1"> -->
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 ">
+
+                            <img src="https://img.freepik.com/premium-vector/cute-flower-cartoon-character_313669-38.jpg"
+                            class="img-fluid" alt="Sample image">
+
+                            <form action="/postsignIn/" method="post">
+                                {% csrf_token %}
+                                <!--  Email input  -->
+                                <div class="form-outline mb-4">
+                                    <label for="loginName" class="form-label">Email</label>
+                                    <input type="email" id="loginName" name="email"  class="form-control">
+                                
+                                </div>    
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="loginPassword">Password</label>
+                                    <input type="password" id="loginPassword" class="form-control" name="pass"/>
+                                </div>
+
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                    <!--Remember me Checkbox -->
+                                    <div class="form-check mb-3 mb-md-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked  name="remember" />
+                                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                    </div>
+                                    </div>
+
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <!-- Simple link -->
+                                        <a href="#!">Forgot password?</a>
+                                    </div>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-info btn-lg btn-block mb-4 ">Sign in</button>
+
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Not a member? <a href='{% url 'signup' %}'>Sign Up</a></p>
+                                </div>
+                                    <!-- <label for="Password">Password</label>
+                                    <input type="password" id="Password" name="pass"><br><br> -->
+                                    <!-- <input type="submit" value="SignIn" ><br><br> -->
+                                    <!-- <label>
+                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label> -->
+                                    <!-- <button type="button" onclick="location.href='{% url 'signup' %} '">SignUp</button> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>  
+        </div>  
+    </section>
 </body>
 </html>
 {% endblock %}

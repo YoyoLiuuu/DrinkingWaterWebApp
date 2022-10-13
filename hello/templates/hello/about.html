@@ -9,7 +9,12 @@
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <style>
-     body{
+    
+        #tab-register{
+            background-color: #5bc0de;
+            color: white;
+        }
+     /* body{
           
         }
         input{
@@ -24,39 +29,94 @@
             color: rgb(255, 255, 255);
             border: none;
             border-radius: 5px;
-        }
- 
+        } */
+    
     </style>
 </head>
 <body>
  
-<form action="/postsignUp/" method="post">
-    {% csrf_token %}
-    <br/>
-      <h1>Create Account</h1>
-      
- 
-<p>Fill in this form to create an account</p>
- 
- 
-    <label for="username">Username:</label>
-    <input type="name" id="Username" name="name" placeholder="Your Name"><br><br>
-    <!-- Email: -->
-    <label for="Email" >Email:</label>
-    <input type="email" id="Email" name="email" placeholder="Your Email Id"><br><br>
-    <!-- Password: -->
-    <label for="Password">Password:</label>
-    <input type="password" id="Password" name="pass" placeholder="Password"><br><br>
-    <!-- RepeatPassword: -->
-    <label for="confirm_password">Confirm Password:</label>
-    <input type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password"><br><br>
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
-     
-    <input type="submit" value="SignUp"><br><br>
- 
-</form>
+
+    <section class="vh-100" style="background-color: #e0fbfc;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 ">
+                            <div class="row justify-content-center">
+                                <h1 >Create Account</h1>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi10QJGNM-UixTdV9SAKQy61OQdSy26wN26puYtSDqhIrkahzCrcxXLDEILp9fHUw8VgE&usqp=CAU"
+                                class="img-fluid" alt="Sample image">   
+                            </div>
+                           
+                            <!-- <h5>Fill in this form to create an account</h5> -->
+                            <form action="/postsignUp/" method="post">
+                                {% csrf_token %}
+                               
+    
+                                <h5  class="form-outline mb-4">Fill in this form to create an account</h5>
+                                 <!--  User name input  -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input class="form-control" type="name" id="username" name="name" placeholder="Enter your name">
+                                </div>
+                                <!-- Email: -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="Email" >Email</label>
+                                    <input class="form-control" type="email" id="Email" name="email" placeholder="Enter your email">
+                                </div>
+                                 <!-- Password: -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="Password">Password</label>
+                                    <input class="form-control" type="password" id="Password" name="pass" placeholder="Enter your password">
+                                </div>
+                                <!-- Repeat password -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label"  for="confirm_password">Confirm Password</label>
+                                    <input  class="form-control" type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password">
+                                </div>
+                                <!--Remember me Checkbox -->
+                                <div class="form-check mb-3 mb-md-0">
+                                    <input class="form-check-input" type="checkbox" value="" id="registerCheck" checked  name="remember" />
+                                    <label class="form-check-label" for="registerCheck"> Remember me </label>
+                                </div>
+                                 <!-- Submit button -->
+                                 <button type="submit" class="btn btn-info btn-lg btn-block mb-4 mt-4">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>  
+        </div>  
+    </section>
+    <!-- <form action="/postsignUp/" method="post">
+        {% csrf_token %} -->
+        <!-- <br/>
+        <h1>Create Account</h1>
+        
+    
+        <p>Fill in this form to create an account</p>
+    
+    
+        <label for="username">Username:</label>
+        <input type="name" id="Username" name="name" placeholder="Your Name"><br><br> -->
+        <!-- Email: -->
+        <!-- <label for="Email" >Email:</label>
+        <input type="email" id="Email" name="email" placeholder="Your Email Id"><br><br> -->
+        <!-- Password: -->
+        <!-- <label for="Password">Password:</label>
+        <input type="password" id="Password" name="pass" placeholder="Password"><br><br> -->
+        <!-- RepeatPassword: -->
+        <!-- <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password"><br><br>
+        <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+        
+        <input type="submit" value="SignUp"><br><br>
+    
+    </form> -->
 </body>
 </html>
 

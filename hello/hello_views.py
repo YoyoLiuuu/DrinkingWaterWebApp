@@ -172,7 +172,8 @@ def postsignUp(request):
                 }
         db.child(uid).set(data)
 
-     except:
+     except Exception as e: 
+        print(e)
         return render(request, "hello/about.html")
      message="Your account has been successfully created, please try logging in."
      return render(request,"hello/home.html",{"message":message})

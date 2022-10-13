@@ -1,6 +1,7 @@
 from django.urls import path
 from hello import hello_views
 from home import home_views
+from waterbottle import views
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import include
 
@@ -11,4 +12,5 @@ urlpatterns = [
     path("hello/<name>", hello_views.hello_there, name="hello_there"),
     path("about/", hello_views.about, name="about"),
     path('check/', home_views.checkboxes),
+    path('goal/', views.waterGoal)
 ]

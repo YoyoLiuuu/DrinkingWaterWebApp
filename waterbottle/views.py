@@ -39,4 +39,23 @@ def waterbottle(request):
     return render(request, 'bottle.html', {"waterbottle": cups, "tracking": trackDict})
 
 def notifications(request):
-    return render(request, 'notifications.html')
+    db = firebase.database()
+    uid = hello_views.pass_id()
+    user = db.child(uid).get()
+    user_info = dict(user.val())
+    cups = user_info.get('water cups') 
+
+    return render(request, 'notifications.html', {"cups": cups})
+
+
+def waterGoal(request):
+    if request.method == 'POST':
+        db = firebase.database()
+        uid = hello_views.pass_id()
+    
+        # GET THE INPUT VARIABLE
+        numb_cups = request.POST.get('waterCups')
+    
+        # UPDATE WATER CUPS INFO IN THE DATABASE
+        db.child(uid).update({"water cups": numb_cups})
+        return render(request, 'notifications.html', {"cups": numb_cups})

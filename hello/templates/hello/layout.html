@@ -8,21 +8,33 @@
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-<div class="navbar">
+
+    <!-- Pills navs -->
+    <ul class="nav nav-pills nav-justified"  id="ex1" role="tablist" style="background-color: #e3f2fd;">
+        <li class="nav-item" role="presentation">
+        <!-- active, bg-info -->
+        <a class="nav-link " id="tab-login" data-mdb-toggle="pill" href="{% url 'home' %}" role="tab"
+            aria-controls="pills-login" aria-selected="true">Login</a>
+        </li>
+        <li class="nav-item" role="presentation">
+        <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="{% url 'about' %}" role="tab"
+            aria-controls="pills-register" aria-selected="false">Create Account</a>
+        </li>
+    </ul>
+  <!-- Pills navs -->
+<!-- <div class="navbar">
     <a href="{% url 'home' %}" class="navbar-brand">Log In</a>
     <a href="{% url 'about' %}" class="navbar-item">Create Account</a>
-</div>
+</div> -->
 
 <div class="body-content">
     {% block content %}
     {% endblock %}
-    <hr/>
-    <footer>
-        <p>Created by QUEEN Fogil SLAAAAAAY</p>
-    </footer>
+
 </div>
 </body>
 </html>

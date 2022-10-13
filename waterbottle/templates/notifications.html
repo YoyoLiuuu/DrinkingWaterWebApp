@@ -18,9 +18,12 @@
     <div id="watergoal">
       <p id="watergoaltext">
         Water goal:
-
-        <input type="number" id="input-get" placeholder="ENTER VALUE">
-        <button id="btn-get">SAVE</button>
+        <form action="/goal/" method="post">
+          {% csrf_token %}
+          <input type="number" id="input-get" name="waterCups" placeholder="ENTER VALUE" value="{{cups}}">
+          <input class="center_box" type="submit" value="Save" id="btn-get" >
+          <!-- <button id="btn-get">SAVE</button> -->
+        </form>
       </p>
       <p id="cups">
         cups
@@ -61,7 +64,9 @@
         <input type="time" id="bedtimeinput-get">
       </p>
       <button id="sleepbtn-get">SAVE</button>
+       <a class="center_box" href="../../home/hello">Back</a>
     </div>
+   
   </div>
   {% csrf_token %}
   <script src="{% static 'js/notifications.js' %}" ></script>

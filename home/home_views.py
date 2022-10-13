@@ -56,9 +56,17 @@ def say_hello(request):
 
     cups = user_info.get('water cups')
 
+    count = 0
+
+    # New user will show good flower
+    tracking = user_info.get("tracking")
+    if tracking == None:
+        cups_decrease = False
+        alive, health = get_live('myname', count)
+        return render(request, 'flower.html', {'Health': health, 'alive': alive, 'cups': cups, 'cups_decrease': cups_decrease})
     # Check if user drank enough water in last 2 days
     # TODAY
-    count = 0
+    
     d = datetime.today().date()
     today = user_info.get("tracking").get(str(d))
     if today == None or int(today) < 8:
@@ -94,6 +102,7 @@ def checkboxes(request):
         db = firebase.database()
 
         box = request.POST.getlist('box')
+        print(box)
         for i in box:
             cups += 1
 
